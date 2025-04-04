@@ -1,0 +1,66 @@
+Updated list of allowed vehicles
+AllowedVehiclesList = [
+    'Ford F-150', 'Chevrolet Silverado', 'Tesla CyberTruck', 'Toyota Tundra', 'Nissan Titan', 
+    'Rivian R1T', 'Ram 1500'
+]
+
+def display_menu():
+    print("\nCarFinder Menu:")
+    print("1. PRINT all Allowed Vehicles")
+    print("2. SEARCH for a Vehicle")
+    print("3. ADD a Vehicle (Sales Manager Only)")
+    print("4. REMOVE a Vehicle (Sales Manager Only)")
+    print("5. EXIT")
+
+def print_allowed_vehicles():
+    print("\nAllowed Vehicles:")
+    for vehicle in AllowedVehiclesList:
+        print(f"- {vehicle}")
+
+def search_vehicle():
+    search_vehicle = input("\nEnter the vehicle model you are searching for: ").title()
+    if search_vehicle in AllowedVehiclesList:
+        print(f"Success: '{search_vehicle}' is available at AutoCountry!")
+    else:
+        print(f"Sorry: '{search_vehicle}' is not available at AutoCountry.")
+
+def add_vehicle():
+    new_vehicle = input("\nEnter the vehicle model to add: ").title()
+    if new_vehicle in AllowedVehiclesList:
+        print(f"'{new_vehicle}' is already in the Allowed Vehicles List.")
+    else:
+        AllowedVehiclesList.append(new_vehicle)
+        print(f"'{new_vehicle}' has been added to the Allowed Vehicles List.")
+
+def remove_vehicle():
+    vehicle_to_remove = input("\nEnter the vehicle model to remove: ").title()
+    if vehicle_to_remove in AllowedVehiclesList:
+        confirmation = input(f"Are you sure you want to remove '{vehicle_to_remove}'? (yes/no): ").strip().lower()
+        if confirmation == "yes":
+            AllowedVehiclesList.remove(vehicle_to_remove)
+            print(f"'{vehicle_to_remove}' has been removed from the Allowed Vehicles List.")
+        else:
+            print(f"'{vehicle_to_remove}' was not removed.")
+    else:
+        print(f"'{vehicle_to_remove}' is not in the Allowed Vehicles List.")
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Enter your choice: ").strip()
+        if choice == "1":
+            print_allowed_vehicles()
+        elif choice == "2":
+            search_vehicle()
+        elif choice == "3":
+            add_vehicle()
+        elif choice == "4":
+            remove_vehicle()
+        elif choice == "5":
+            print("Exiting CarFinder. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
