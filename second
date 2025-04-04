@@ -1,0 +1,40 @@
+def display_menu():
+    print("\nCarFinder Menu:")
+    print("1. PRINT all Allowed Vehicles")
+    print("2. SEARCH for a Vehicle")
+    print("3. EXIT")
+
+def print_allowed_vehicles():
+    AllowedVehiclesList = [
+        'Ford F-150', 'Chevrolet Silverado', 'Tesla CyberTruck', 'Toyota Tundra', 'Nissan Titan'
+    ]
+    print("\nAllowed Vehicles:")
+    for vehicle in AllowedVehiclesList:
+        print(f"- {vehicle}")
+
+def search_vehicle():
+    AllowedVehiclesList = [
+        'Ford F-150', 'Chevrolet Silverado', 'Tesla CyberTruck', 'Toyota Tundra', 'Nissan Titan'
+    ]
+    search_vehicle = input("\nEnter the vehicle model you are searching for: ").title()
+    if search_vehicle in AllowedVehiclesList:
+        print(f"Success: '{search_vehicle}' is available at AutoCountry!")
+    else:
+        print(f"Sorry: '{search_vehicle}' is not available at AutoCountry.")
+
+def main():
+    while True:
+        display_menu()
+        choice = input("Enter your choice: ").strip()
+        if choice == "1":
+            print_allowed_vehicles()
+        elif choice == "2":
+            search_vehicle()
+        elif choice == "3":
+            print("Exiting CarFinder. Goodbye!")
+            break
+        else:
+            print("Invalid choice. Please try again.")
+
+if __name__ == "__main__":
+    main()
